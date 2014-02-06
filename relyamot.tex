@@ -1,0 +1,62 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[]{amsmath,amssymb}
+
+\newenvironment{lemma}{\textit{Lemma.} --- }{}
+
+\title{On relative YA-motives}
+\author{Johan Commelin}
+
+\begin{document} % {{{-
+\maketitle
+
+Let $S/k$ be a smooth projective scheme over a field $k$. Let $f \colon X \to
+S$ be a smooth projective $S$-scheme. In some sense, one wants to interpret
+$\textrm{R}f_{*}\mathbb{Q}$ as a relative motive $h(X/S)$, and
+$\textrm{R}^{q}f_{*}\mathbb{Q}$ as the $q$-th K\"{u}nneth component
+$h^{q}(X/S)$.
+
+Now, if we drop out of the setting relative to $S$, back to the absolute
+setting over $k$, we have the following decomposition, due to Deligne:
+Since $f$ is smooth and projective, the Leray spectral sequence
+\[
+	E_{2}^{pq} = \textrm{H}^{p}(S, \textrm{R}^{q}f_{*}\mathbb{Q})
+	\quad \Rightarrow \textrm{H}^{p+q}(X, \mathbb{Q})
+\]
+degenerates at the second page, and the filtration splits (non-canonically)
+giving a decomposition
+\[
+	\textrm{H}^{n}(X, \mathbb{Q}) \cong \bigoplus_{p+q = n}
+	\textrm{H}^{p}(S, \textrm{R}^{q}f_{*}\mathbb{Q}).
+\]
+
+This decomposition is a consequence of the \emph{relative hard Lefschetz
+theorem}, which is conjectured to be motivic. Yves Andr\'{e} constructed a
+category of motives that accounts for this problem. In this category we give
+the motivic analogue of the above decomposition. This result has as application
+that the decomposition on the level of cohomology (the realisations) respects
+extra structure (say Hodge structure, Galois action, \&c).
+
+\section{Relative motives}
+
+Let $S/k$ be a smooth projective scheme over a field $k$. Define the category
+of relative YA-motives: $\mathcal{M}_{S}$ the category of YA-motives over $S$.
+
+\begin{lemma} % {{{-
+	Let $S/k$ be a smooth projective scheme over a field $k$. Write
+	$\mathcal{M}_{S}$ for the category of YA-motives over $S$.
+
+	Let $h(S)$ be the motive of $S$ in $\mathcal{M}_{k}$. Let $C$ be the
+	under category $h(S) \downarrow \mathcal{M}_{k}$ (objects: $h(S) \to M$
+	in $\mathcal{M}_{k}$; morphisms: commutative triangles in
+	$\mathcal{M}_{k}$).
+
+	The category $\mathcal{M}_{S}$ is equivalent to $C$.
+	
+	(Which way does the easy functor go?)
+\end{lemma} % -}}}
+
+
+\section{Decomposition theorem}
+
+\end{document} % -}}}
