@@ -106,8 +106,6 @@ Let $F$ be a field of characteristic $0$. Denote with $\fgrep{F}{S}$ the
 category of finite-dimensional $\mathbb{Z}$-graded $\pi(S)$-representations
 over $F$. In other words, an object $A$ of $\fgrep{F}{S}$ is
 
-\section{Relative algebraic cycles}
-
 \section{Relative Weil cohomology}
 
 Let $S$ be a connected scheme. Let $F$ be a field of characteristic $0$. Recall
@@ -146,7 +144,7 @@ of
 	\item (\emph{cycle map}) for every $X \in \basepieces$, and every $i
 		\in \mathbb{Z}$ a map
 		$\function{\gamma_{X}}%
-		{\cyc^{i}(X/S)}{\coh^{2i}(X)^{\pi(S)}(i)}$;
+		{\cyc^{i}(X)}{\coh^{2i}(X)^{\pi(S)}(i)}$;
 \end{enumerate} % -}}}
 such that for $X \in \basepieces$ of (relative) dimension $n$ over $S$:
 \begin{enumerate}[label=(C\arabic*)] % {{{-
@@ -186,15 +184,15 @@ such that for $X \in \basepieces$ of (relative) dimension $n$ over $S$:
 		is commutative;
 	\item for $Y \in \basepieces$, the natural diagram
 		\[ \begin{tikzcd} % {{{-
-			\cyc^{i}(X/S) \tensor \cyc^{j}(Y/S) \dar
+			\cyc^{i}(X) \tensor \cyc^{j}(Y) \dar
 			\rar{\gamma_{X} \tensor \gamma_{Y}} &
 			\coh^{2i}(X)(i) \tensor \coh^{2j}(Y)(j) \dar \\
-			\cyc^{i+j}((X \times Y)/S) \rar{\gamma_{X \times Y}} &
+			\cyc^{i+j}(X \times_{S} Y) \rar{\gamma_{X \times Y}} &
 			\coh^{2(i+j)}(X \times Y)(i+j)
 		\end{tikzcd} \] % -}}}
 		is commutative;
 	\item for a map $\function{f}{X}{Y}$ in $\basepieces$, a prime cycle
-		$x \in \cyc^{i}(X/S)$, the integer $d$ satisfying $f_{*}x =
+		$x \in \cyc^{i}(X)$, the integer $d$ satisfying $f_{*}x =
 		d\overline{f[x]}$ (i.e., the degree of the map
 		$\function{}{x}{\overline{f[x]}}$), and a class $\alpha \in
 		\coh^{2(n-i)}(Y)(n-i)$, the equality
@@ -220,13 +218,48 @@ such that for $X \in \basepieces$ of (relative) dimension $n$ over $S$:
 	we later have a very natural extension of $\coh$ to motives.
 \end{remark} % -}}}
 
+A relative Weil cohomology is said to satisfy the \emph{weak Lefschetz theorem}
+if for each $X \in \basepieces$ of (relative) dimension $n$ over $S$, and each
+
+
+\begin{lemma} % {{{-
+	The classical Weil cohomologies have relative versions.
+	\begin{enumerate} % {{{-
+		\item Let $S$ be a smooth projective $\mathbb{C}$-scheme. Then
+			\[
+				\map{\coh}%
+				{\basepieces^{\mathrm{op}}}%
+				{\fgrep{\mathbb{Q}}{S}}%
+				{\function{f}{X}{S}}%
+				{\mathrm{R}f_{*}\mathbb{Q}}
+			\]
+			is a relative Weil cohomology satisfying the weak and
+			hard Lefschetz theorems.
+		\item Let $k$ be a field (say global, local, or finite), and
+			let $S$ be a smooth projective $k$-scheme. Let $\ell$
+			be a prime different from the characteristic of $k$.
+			Then
+			\[
+				\map{\coh}%
+				{\basepieces^{\mathrm{op}}}%
+				{\fgrep{\mathbb{Q_{\ell}}}{S}}%
+				{\function{f}{X}{S}}%
+				{\mathrm{R}f_{*}\mathbb{Q}_{\ell}}
+			\]
+			is a relative Weil cohomology satisfying the weak and
+			hard Lefschetz theorems.
+		\item Let $k$ be a field, and let $S$ be a smooth projective
+			$k$-scheme. (Version for algebraic de Rham.)
+		\item (Version for crystalline???)
+	\end{enumerate} % -}}}
+\end{lemma} % -}}}
+
 \section{Relative motives}
 
 %Define the category of relative YA-motives: $\mathcal{M}_{S}$ the category of
 %YA-motives over $S$.
-Fix a reference
-cohomology $\coh$ on $\basepieces$, with coefficients in a field $F$ of
-characteristic $0$, satisfying the hard Lefschetz theorem (relative to $S$).
+Fix a reference cohomology $\coh$ on $\basepieces$, with coefficients in a
+field $F$ of characteristic $0$.
 
 \begin{lemma} % {{{-
 	Let $X/S$ be a smooth projective scheme over a scheme $S$. Write
