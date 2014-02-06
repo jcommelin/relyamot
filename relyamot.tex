@@ -1,33 +1,76 @@
 \documentclass[a4paper,10pt]{article}
 
+\def\fixme{\textbf}
+
 \usepackage[]{amsmath,amssymb}
+\usepackage[]{mathrsfs}
+
+\usepackage[inline]{enumitem}
 
 \newenvironment{lemma}{\textit{Lemma.} --- }{}
+\newenvironment{remark}{\textit{Remark.} --- }{}
+
+\makeatletter % {{{-
+\newcommand*\map@arrow[1][]{\csname#1rightarrow\endcsname{}}
+
+\newcommand*\function@textstyle[4][]{#2\colon#3\map@arrow[#1]#4}
+\newcommand*\function[4][]{%
+	\mathchoice
+	{\function@textstyle[long#1]{#2}{#3}{#4}}
+	{\function@textstyle[#1]{#2}{#3}{#4}}
+	{\function@textstyle[#1]{#2}{#3}{#4}}
+	{\function@textstyle[#1]{#2}{#3}{#4}}
+}
+\newcommand*\map@textstyle[6][]{#2\colon#3\rightarrow#4:#5\mapsto#6}
+\newcommand*\map[6][]{%
+	\mathchoice
+	{#2\colon\
+		\begin{array}{ccc}
+			#3&~\map@arrow[long#1]~&#4 \\
+			#5&~\longmapsto~&#6
+		\end{array}
+	}
+	{\map@textstyle[#1]{#2}{#3}{#4}{#5}{#6}}
+	{\map@textstyle[#1]{#2}{#3}{#4}{#5}{#6}}
+	{\map@textstyle[#1]{#2}{#3}{#4}{#5}{#6}}
+}
+\makeatother % -}}}
+
+\newcommand*\longhookrightarrow{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+\newcommand*\longtwoheadrightarrow{\ensuremath{\relbar\joinrel\twoheadrightarrow}}
+
+\def\basepieces{\mathscr{V}}
+\def\smpr{\mathrm{SmPr}}
+\newcommand{\fgrep}[2]{#1\mathrm{-FGRep}_{#2}}
+\def\coh{\mathrm{H}}
+\def\tensor{\otimes}
+\def\CH{\mathrm{CH}}
+\def\pr{\mathrm{pr}}
 
 \title{On relative YA-motives}
 \author{Johan Commelin}
 
-\begin{document} % {{{-
+\begin{document}
 \maketitle
 
-Let $S/k$ be a smooth projective scheme over a field $k$. Let $f \colon X \to
-S$ be a smooth projective $S$-scheme. In some sense, one wants to interpret
-$\textrm{R}f_{*}\mathbb{Q}$ as a relative motive $h(X/S)$, and
-$\textrm{R}^{q}f_{*}\mathbb{Q}$ as the $q$-th K\"{u}nneth component
+Let $S/k$ be a smooth projective scheme over a field $k$. Let
+$\function{f}{X}{S}$ be a smooth projective $S$-scheme. In some sense, one
+wants to interpret $\mathrm{R}f_{*}\mathbb{Q}$ as a relative motive $h(X/S)$,
+and $\mathrm{R}^{q}f_{*}\mathbb{Q}$ as the $q$-th K\"{u}nneth component
 $h^{q}(X/S)$.
 
 Now, if we drop out of the setting relative to $S$, back to the absolute
 setting over $k$, we have the following decomposition, due to Deligne:
 Since $f$ is smooth and projective, the Leray spectral sequence
 \[
-	E_{2}^{pq} = \textrm{H}^{p}(S, \textrm{R}^{q}f_{*}\mathbb{Q})
-	\quad \Rightarrow \textrm{H}^{p+q}(X, \mathbb{Q})
+	E_{2}^{pq} = \coh^{p}(S, \mathrm{R}^{q}f_{*}\mathbb{Q})
+	\quad \Rightarrow \coh^{p+q}(X, \mathbb{Q})
 \]
 degenerates at the second page, and the filtration splits (non-canonically)
 giving a decomposition
 \[
-	\textrm{H}^{n}(X, \mathbb{Q}) \cong \bigoplus_{p+q = n}
-	\textrm{H}^{p}(S, \textrm{R}^{q}f_{*}\mathbb{Q}).
+	\coh^{n}(X, \mathbb{Q}) \cong \bigoplus_{p+q = n}
+	\coh^{p}(S, \mathrm{R}^{q}f_{*}\mathbb{Q}).
 \]
 
 This decomposition is a consequence of the \emph{relative hard Lefschetz
@@ -37,21 +80,109 @@ the motivic analogue of the above decomposition. This result has as application
 that the decomposition on the level of cohomology (the realisations) respects
 extra structure (say Hodge structure, Galois action, \&c).
 
+\section{Notation}
+
+Let $S$ be a connected scheme. Then $\smpr_{S}$ denotes the category of smooth
+projective $S$-schemes with geometrically integral fibres. Let $\basepieces$ be
+a full subcategory of $\smpr_{S}$, such that $\basepieces$ is stable under:
+\begin{enumerate*}[label=(\alph*)] % {{{-
+	\item products (i.e., the fibre product over $S$);
+	\item disjoint sums;
+	\item taking connected components.
+\end{enumerate*} % -}}}
+The objects of $\basepieces$ are called \emph{base pieces}.
+
+Let $F$ be a field of characteristic $0$. Denote with $\fgrep{F}{S}$ the
+category of finite-dimensional $\mathbb{Z}$-graded $\pi(S)$-representations
+over $F$. In other words, an object $A$ of $\fgrep{F}{S}$ is
+
+\section{Relative algebraic cycles}
+
+\section{Relative Weil cohomology}
+
+Let $S$ be a connected scheme. Let $F$ be a field of characteristic $0$. Recall
+the notation $\smpr_{S}$, $\basepieces$, and $\fgrep{F}{S}$.
+
+A \emph{graded commutative monoid} $A$ in $\fgrep{F}{S}$ by definition comes
+with
+\begin{enumerate*}[label=(\alph*)] % {{{-
+	\item a $\pi(S)$-equivariant \emph{multiplication map} $A \tensor A \to
+		A$ (satisfying associativity);
+	\item an element $1 \in A$ that is a unit for the multiplication;
+\end{enumerate*} % -}}}
+such that for $x \in A^{i}$ and $y \in A^{j}$ the \emph{graded commutativity
+law}
+\[
+	x \tensor y = (-1)^{ij} y \tensor x
+\]
+is satisfied.
+
+A \emph{Weil cohomology} (on $\basepieces$ with coefficients in $F$) consists
+of
+\begin{enumerate}[label=(D\arabic*)] % {{{-
+	\item a functor
+		\[
+			\function{\coh}%
+			{\basepieces^{\mathrm{op}}}%
+			{\fgrep{F}{S}};
+		\]
+	\item a $1$-dimensional graded $\pi(S)$-representation $F(1)$,
+		concentrated in degree $-2$ (this gives rise to \emph{Tate
+		twists}: for any $V \in \fgrep{F}{S}$, and $n \in \mathbb{Z}$
+		we define $V(n)$ as $V \tensor F(1)^{\tensor n}$);
+	\item a \emph{cycle map}
+		$\function{\gamma_{X}}%
+		{\CH^{i}(X/S)}%
+		{\coh^{2i}(X)^{\pi(S)}(i)}$;
+\end{enumerate} % -}}}
+such that for $X \in \basepieces$ of (relative) dimension $n$ over $S$:
+\begin{enumerate}[label=(C\arabic*)] % {{{-
+	\item (\emph{Cup product}) $\coh(X)$ is a graded commutative monoid in
+		$\fgrep{F}{S}$ (the multiplication is denoted with $\cup$);
+	\item for every map $\function{f}{X}{Y}$ in $\basepieces$, the induced
+		map $f^{*} = \function{\coh(f)}{\coh(Y)}{\coh(X)}$ is respects
+		the unit and multiplication of the monoids;
+	\item for $i < 0$ and for $i > 2n$ the $i$-th graded piece
+		$\coh^{i}(X)$ is $0$;
+	\item $\coh^{2n}(X)$ is a representation of dimension $1$ (isomorphic
+		to $F(n)$ ???);
+	\item (\emph{Poincar\'{e} duality}) for all $i$ there is a
+		nondegenerate pairing $\coh^{i}(X) \times \coh^{2n-i}(X) \to
+		\coh^{2n}(X)$;
+	\item (\emph{K\"{u}nneth}) for every $Y \in \basepieces$
+		the canonical map
+		\[
+			\map{}{\coh(X) \tensor \coh(Y)}{\coh(X \times Y)}%
+			{x \tensor y}{\pr_{X}^{*} \cup \pr_{Y}^{*}}
+		\]
+		is an isomorphism;
+	\item foo
+\end{enumerate} % -}}}
+
+\begin{remark} % {{{-
+	We deliberately choose $\fgrep{F}{S}$ as target of $\coh$, instead of
+	the category of graded commutative monoids in $\fgrep{F}{S}$. This way,
+	we later have a very natural extension of $\coh$ to motives.
+\end{remark} % -}}}
+
 \section{Relative motives}
 
-Let $S/k$ be a smooth projective scheme over a field $k$. Define the category
-of relative YA-motives: $\mathcal{M}_{S}$ the category of YA-motives over $S$.
+%Define the category of relative YA-motives: $\mathcal{M}_{S}$ the category of
+%YA-motives over $S$.
+Fix a reference
+cohomology $\coh$ on $\basepieces$, with coefficients in a field $F$ of
+characteristic $0$, satisfying the hard Lefschetz theorem (relative to $S$).
 
 \begin{lemma} % {{{-
-	Let $S/k$ be a smooth projective scheme over a field $k$. Write
-	$\mathcal{M}_{S}$ for the category of YA-motives over $S$.
+	Let $X/S$ be a smooth projective scheme over a scheme $S$. Write
+	$\mathcal{M}_{X}$ for the category of YA-motives over $X$.
 
-	Let $h(S)$ be the motive of $S$ in $\mathcal{M}_{k}$. Let $C$ be the
-	under category $h(S) \downarrow \mathcal{M}_{k}$ (objects: $h(S) \to M$
-	in $\mathcal{M}_{k}$; morphisms: commutative triangles in
-	$\mathcal{M}_{k}$).
+	Let $h(X)$ be the motive of $X$ in $\mathcal{M}_{S}$. Let $\mathcal{C}$
+	be the under category $h(X) \downarrow \mathcal{M}_{S}$ (objects: $h(X)
+	\to M$ in $\mathcal{M}_{S}$; morphisms: commutative triangles in
+	$\mathcal{M}_{S}$).
 
-	The category $\mathcal{M}_{S}$ is equivalent to $C$.
+	The category $\mathcal{M}_{X}$ is equivalent to $\mathcal{C}$.
 	
 	(Which way does the easy functor go?)
 \end{lemma} % -}}}
@@ -59,4 +190,4 @@ of relative YA-motives: $\mathcal{M}_{S}$ the category of YA-motives over $S$.
 
 \section{Decomposition theorem}
 
-\end{document} % -}}}
+\end{document}
