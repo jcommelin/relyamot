@@ -5,6 +5,8 @@
 \usepackage[]{amsmath,amssymb}
 \usepackage[]{mathrsfs}
 
+\usepackage[]{tikz-cd}
+
 \usepackage[inline]{enumitem}
 
 \newenvironment{lemma}{\textit{Lemma.} --- }{}
@@ -46,6 +48,8 @@
 \def\tensor{\otimes}
 \def\CH{\mathrm{CH}}
 \def\pr{\mathrm{pr}}
+\def\cyc{\mathscr{Z}}
+\def\Tr{\mathrm{Tr}}
 
 \title{On relative YA-motives}
 \author{Johan Commelin}
@@ -83,7 +87,13 @@ extra structure (say Hodge structure, Galois action, \&c).
 \section{Notation}
 
 Let $S$ be a connected scheme. Then $\smpr_{S}$ denotes the category of smooth
-projective $S$-schemes with geometrically integral fibres. Let $\basepieces$ be
+projective $S$-schemes with geometrically integral fibres.
+% The geometrically integral fibres are very restrictive. For example if S =
+% Spec(k), we do not have field extensions l/k in our category. We might
+% actually want them to be included. If we do include them, we have to be very
+% careful in our definition of Weil cohomology theory, because objects need not
+% be connected and equidimensional anymore.
+Let $\basepieces$ be
 a full subcategory of $\smpr_{S}$, such that $\basepieces$ is stable under:
 \begin{enumerate*}[label=(\alph*)] % {{{-
 	\item products (i.e., the fibre product over $S$);
@@ -130,14 +140,17 @@ of
 		concentrated in degree $-2$ (this gives rise to \emph{Tate
 		twists}: for any $V \in \fgrep{F}{S}$, and $n \in \mathbb{Z}$
 		we define $V(n)$ as $V \tensor F(1)^{\tensor n}$);
-	\item a \emph{cycle map}
+	\item (\emph{trace map}) for every $X \in \basepieces$ of (relative)
+		dimension $n$ over $S$ a map
+		$\function{\Tr_{X}}{\coh^{2n}(X)(n)}{F}$;
+	\item (\emph{cycle map}) for every $X \in \basepieces$, and every $i
+		\in \mathbb{Z}$ a map
 		$\function{\gamma_{X}}%
-		{\CH^{i}(X/S)}%
-		{\coh^{2i}(X)^{\pi(S)}(i)}$;
+		{\cyc^{i}(X/S)}{\coh^{2i}(X)^{\pi(S)}(i)}$;
 \end{enumerate} % -}}}
 such that for $X \in \basepieces$ of (relative) dimension $n$ over $S$:
 \begin{enumerate}[label=(C\arabic*)] % {{{-
-	\item (\emph{Cup product}) $\coh(X)$ is a graded commutative monoid in
+	\item (\emph{cup product}) $\coh(X)$ is a graded commutative monoid in
 		$\fgrep{F}{S}$ (the multiplication is denoted with $\cup$);
 	\item for every map $\function{f}{X}{Y}$ in $\basepieces$, the induced
 		map $f^{*} = \function{\coh(f)}{\coh(Y)}{\coh(X)}$ is respects
@@ -146,18 +159,60 @@ such that for $X \in \basepieces$ of (relative) dimension $n$ over $S$:
 		$\coh^{i}(X)$ is $0$;
 	\item $\coh^{2n}(X)$ is a representation of dimension $1$ (isomorphic
 		to $F(n)$ ???);
-	\item (\emph{Poincar\'{e} duality}) for all $i$ there is a
-		nondegenerate pairing $\coh^{i}(X) \times \coh^{2n-i}(X) \to
-		\coh^{2n}(X)$;
+	\item (\emph{Poincar\'{e} duality}) the trace map
+		$\function{\Tr_{X}}{\coh^{2n}(X)(n)}{F}$ is an isomorphism, and
+		for all $i \in \mathbb{Z}$ the product map
+		$\function{\cup}{\coh^{i}(X) \times
+		\coh^{2n-i}(X)(n)}{\coh^{2n}(X)(n)}$ composed with $\Tr_{X}$
+		induces a perfect duality between $\coh^{i}(X)$ and
+		$\coh^{2n-i}(X)(n)$;
 	\item (\emph{K\"{u}nneth}) for every $Y \in \basepieces$
 		the canonical map
 		\[
 			\map{}{\coh(X) \tensor \coh(Y)}{\coh(X \times Y)}%
 			{x \tensor y}{\pr_{X}^{*} \cup \pr_{Y}^{*}}
 		\]
-		is an isomorphism;
-	\item foo
+		is an isomorphism of graded commutative monoids;
+	\item for $Y \in \basepieces$ of (relative) dimension $m$ over $S$, the
+		natural diagram
+		\[ \begin{tikzcd} % {{{-
+			\coh^{2n}(X)(n) \tensor \coh^{2m}(Y)(m)
+			\drar{\Tr_{X} \tensor \Tr_{Y}}
+			\dar{} & \\
+			\coh^{2(n+m)}(X \times Y)(n+m)
+			\rar[swap]{\Tr_{X \times Y}} &
+			F
+		\end{tikzcd} \] % -}}}
+		is commutative;
+	\item for $Y \in \basepieces$, the natural diagram
+		\[ \begin{tikzcd} % {{{-
+			\cyc^{i}(X/S) \tensor \cyc^{j}(Y/S) \dar
+			\rar{\gamma_{X} \tensor \gamma_{Y}} &
+			\coh^{2i}(X)(i) \tensor \coh^{2j}(Y)(j) \dar \\
+			\cyc^{i+j}((X \times Y)/S) \rar{\gamma_{X \times Y}} &
+			\coh^{2(i+j)}(X \times Y)(i+j)
+		\end{tikzcd} \] % -}}}
+		is commutative;
+	\item for a map $\function{f}{X}{Y}$ in $\basepieces$, a prime cycle
+		$x \in \cyc^{i}(X/S)$, the integer $d$ satisfying $f_{*}x =
+		d\overline{f[x]}$ (i.e., the degree of the map
+		$\function{}{x}{\overline{f[x]}}$), and a class $\alpha \in
+		\coh^{2(n-i)}(Y)(n-i)$, the equality
+		\[
+			\Tr_{X}(\gamma{X}(x) \cup f^{*}\alpha) =
+			d\Tr_{Y}(\gamma_{Y}(f_{*}x) \cup \alpha)
+		\]
+		holds;
+	\item for a map $\function{f}{X}{Y}$ in $\basepieces$, the equality
+		\[
+			\gamma_{X} \circ f^{*} = f^{*} \circ \gamma_{Y}
+		\]
+		holds (i.e., the cycle map commutes with pullbacks);
+	\item for the base scheme $S$, the image of $\Tr_{S} \circ \gamma_{S}$
+		is $\mathbb{Z} \subset F$.
 \end{enumerate} % -}}}
+% This might be to restrictive: see the comment right after the definition of
+% \smpr_{S}.
 
 \begin{remark} % {{{-
 	We deliberately choose $\fgrep{F}{S}$ as target of $\coh$, instead of
