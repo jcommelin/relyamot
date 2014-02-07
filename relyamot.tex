@@ -11,8 +11,8 @@
 
 \usepackage[inline]{enumitem}
 
-\newenvironment{lemma}{\textit{Lemma.} --- }{}
-\newenvironment{remark}{\textit{Remark.} --- }{}
+\newenvironment{lemma}{\medskip\textit{Lemma.} --- }{}
+\newenvironment{remark}{\medskip\textit{Remark.} --- }{\medskip}
 
 \makeatletter % {{{-
 \newcommand*\map@arrow[1][]{\csname#1rightarrow\endcsname{}}
@@ -73,7 +73,7 @@
 
 \def\basepieces{\mathscr{V}}
 \def\smpr{\mathrm{SmPr}}
-\newcommand{\fgrep}[2]{#1\mathrm{-FGRep}_{#2}}
+\newcommand{\fgrep}[2]{#1\textrm{-}\mathrm{FGRep}_{#2}}
 \def\coh{\mathrm{H}}
 \def\tensor{\otimes}
 \def\CH{\mathrm{CH}}
@@ -98,7 +98,7 @@ setting over $k$, we have the following decomposition, due to Deligne:
 Since $f$ is smooth and projective, the Leray spectral sequence
 \[
 	E_{2}^{pq} = \coh^{p}(S, \mathrm{R}^{q}f_{*}\mathbb{Q})
-	\quad \Rightarrow \coh^{p+q}(X, \mathbb{Q})
+	\quad \Longrightarrow \coh^{p+q}(X, \mathbb{Q})
 \]
 degenerates at the second page, and the filtration splits (non-canonically)
 giving a decomposition
@@ -123,6 +123,8 @@ projective $S$-schemes with geometrically integral fibres.
 % actually want them to be included. If we do include them, we have to be very
 % careful in our definition of Weil cohomology theory, because objects need not
 % be connected and equidimensional anymore.
+% 
+% Ok, we DEFINITELY need more then connected schemes.
 Let $\basepieces$ be
 a full subcategory of $\smpr_{S}$, such that $\basepieces$ is stable under:
 \begin{enumerate*}[label=(\alph*)] % {{{-
@@ -202,7 +204,7 @@ such that for $X \in \basepieces$ of (relative) dimension $n$ over $S$:
 		is an isomorphism of graded commutative monoids;
 	\item for $Y \in \basepieces$ of (relative) dimension $m$ over $S$, the
 		natural diagram
-		\[ \begin{tikzcd} % {{{-
+		\[ \begin{tikzcd}[column sep=large] % {{{-
 			\coh^{2n}(X)(n) \tensor \coh^{2m}(Y)(m)
 			\drar{\Tr_{X} \tensor \Tr_{Y}}
 			\dar{} & \\
@@ -212,7 +214,7 @@ such that for $X \in \basepieces$ of (relative) dimension $n$ over $S$:
 		\end{tikzcd} \] % -}}}
 		is commutative;
 	\item for $Y \in \basepieces$, the natural diagram
-		\[ \begin{tikzcd} % {{{-
+		\[ \begin{tikzcd}[column sep=large] % {{{-
 			\cyc^{i}(X) \tensor \cyc^{j}(Y) \dar
 			\rar{\gamma_{X} \tensor \gamma_{Y}} &
 			\coh^{2i}(X)(i) \tensor \coh^{2j}(Y)(j) \dar \\
