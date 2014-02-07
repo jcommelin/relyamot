@@ -251,7 +251,28 @@ such that for $X \in \basepieces$ of (relative) dimension $n$ over $S$:
 
 A relative Weil cohomology is said to satisfy the \emph{weak Lefschetz theorem}
 if for each $X \in \basepieces$ of (relative) dimension $n$ over $S$, and each
+smooth hyperplane section $Y \in \basepieces$ of $X$ the maps on cohomology
+induced by $\map{Y}[hook]{X}$ satisfy
+\[
+	\map{\coh^{i}(X)}{\coh^{i}(Y)} \text{ is }
+	\begin{cases} % {{{-
+		\text{an isomorphism} & \text{if } 0 \le i < n - 1 \\
+		\text{injective} & \text{if } i = n - 1.
+	\end{cases} % -}}}
+\]
 
+A relative Weil cohomology is said to satisfy the \emph{hard Lefschetz theorem}
+if for each $X \in \basepieces$ of (relative) dimension $n$ over $S$, and each
+smooth hyperplane section $Y \in \basepieces$ of $X$ (in particular $Y \in
+\cyc^{1}(X)$) the map of degree $2$
+\[
+	\map[L]{\coh^{\bullet}(X)}{\coh^{\bullet+2}(X)}%
+	[\alpha][\alpha \cup \gamma_{X}(Y)]
+\]
+induces isomorphisms
+\[
+	\map[L^{i}]{\coh^{n-i}(X)}{\coh^{n+i}(X)}.
+\]
 
 \begin{lemma} % {{{-
 	The classical Weil cohomologies have relative versions.
