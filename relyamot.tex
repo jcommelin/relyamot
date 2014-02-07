@@ -2,6 +2,8 @@
 
 \def\fixme{\textbf}
 
+\usepackage[]{xparse}
+
 \usepackage[]{amsmath,amssymb}
 \usepackage[]{mathrsfs}
 
@@ -86,7 +88,7 @@
 \maketitle
 
 Let $S/k$ be a smooth projective scheme over a field $k$. Let
-$\function{f}{X}{S}$ be a smooth projective $S$-scheme. In some sense, one
+$\map[f]{X}{S}$ be a smooth projective $S$-scheme. In some sense, one
 wants to interpret $\mathrm{R}f_{*}\mathbb{Q}$ as a relative motive $h(X/S)$,
 and $\mathrm{R}^{q}f_{*}\mathbb{Q}$ as the $q$-th K\"{u}nneth component
 $h^{q}(X/S)$.
@@ -158,7 +160,7 @@ of
 \begin{enumerate}[label=(D\arabic*)] % {{{-
 	\item a functor
 		\[
-			\function{\coh}%
+			\map[\coh]%
 			{\basepieces^{\mathrm{op}}}%
 			{\fgrep{F}{S}};
 		\]
@@ -168,35 +170,34 @@ of
 		we define $V(n)$ as $V \tensor F(1)^{\tensor n}$);
 	\item (\emph{trace map}) for every $X \in \basepieces$ of (relative)
 		dimension $n$ over $S$ a map
-		$\function{\Tr_{X}}{\coh^{2n}(X)(n)}{F}$;
+		$\map[\Tr_{X}]{\coh^{2n}(X)(n)}{F}$;
 	\item (\emph{cycle map}) for every $X \in \basepieces$, and every $i
 		\in \mathbb{Z}$ a map
-		$\function{\gamma_{X}}%
-		{\cyc^{i}(X)}{\coh^{2i}(X)^{\pi(S)}(i)}$;
+		$\map[\gamma_{X}] {\cyc^{i}(X)}{\coh^{2i}(X)(i)^{\pi(S)}}$;
 \end{enumerate} % -}}}
 such that for $X \in \basepieces$ of (relative) dimension $n$ over $S$:
 \begin{enumerate}[label=(C\arabic*)] % {{{-
 	\item (\emph{cup product}) $\coh(X)$ is a graded commutative monoid in
 		$\fgrep{F}{S}$ (the multiplication is denoted with $\cup$);
-	\item for every map $\function{f}{X}{Y}$ in $\basepieces$, the induced
-		map $f^{*} = \function{\coh(f)}{\coh(Y)}{\coh(X)}$ is respects
+	\item for every map $\map[f]{X}{Y}$ in $\basepieces$, the induced
+		map $f^{*} = \map[\coh(f)]{\coh(Y)}{\coh(X)}$ is respects
 		the unit and multiplication of the monoids;
 	\item for $i < 0$ and for $i > 2n$ the $i$-th graded piece
 		$\coh^{i}(X)$ is $0$;
 	\item $\coh^{2n}(X)$ is a representation of dimension $1$ (isomorphic
 		to $F(n)$ ???);
 	\item (\emph{Poincar\'{e} duality}) the trace map
-		$\function{\Tr_{X}}{\coh^{2n}(X)(n)}{F}$ is an isomorphism, and
+		$\map[\Tr_{X}]{\coh^{2n}(X)(n)}{F}$ is an isomorphism, and
 		for all $i \in \mathbb{Z}$ the product map
-		$\function{\cup}{\coh^{i}(X) \times
+		$\map[\cup]{\coh^{i}(X) \times
 		\coh^{2n-i}(X)(n)}{\coh^{2n}(X)(n)}$ composed with $\Tr_{X}$
 		induces a perfect duality between $\coh^{i}(X)$ and
 		$\coh^{2n-i}(X)(n)$;
 	\item (\emph{K\"{u}nneth}) for every $Y \in \basepieces$
 		the canonical map
 		\[
-			\map{}{\coh(X) \tensor \coh(Y)}{\coh(X \times Y)}%
-			{x \tensor y}{\pr_{X}^{*} \cup \pr_{Y}^{*}}
+			\map{\coh(X) \tensor \coh(Y)}{\coh(X \times Y)}%
+			[x \tensor y][\pr_{X}^{*} \cup \pr_{Y}^{*}]
 		\]
 		is an isomorphism of graded commutative monoids;
 	\item for $Y \in \basepieces$ of (relative) dimension $m$ over $S$, the
@@ -219,17 +220,17 @@ such that for $X \in \basepieces$ of (relative) dimension $n$ over $S$:
 			\coh^{2(i+j)}(X \times Y)(i+j)
 		\end{tikzcd} \] % -}}}
 		is commutative;
-	\item for a map $\function{f}{X}{Y}$ in $\basepieces$, a prime cycle
+	\item for a map $\map[f]{X}{Y}$ in $\basepieces$, a prime cycle
 		$x \in \cyc^{i}(X)$, the integer $d$ satisfying $f_{*}x =
 		d\overline{f[x]}$ (i.e., the degree of the map
-		$\function{}{x}{\overline{f[x]}}$), and a class $\alpha \in
+		$\map{x}{\overline{f[x]}}$), and a class $\alpha \in
 		\coh^{2(n-i)}(Y)(n-i)$, the equality
 		\[
 			\Tr_{X}(\gamma{X}(x) \cup f^{*}\alpha) =
 			d\Tr_{Y}(\gamma_{Y}(f_{*}x) \cup \alpha)
 		\]
 		holds;
-	\item for a map $\function{f}{X}{Y}$ in $\basepieces$, the equality
+	\item for a map $\map[f]{X}{Y}$ in $\basepieces$, the equality
 		\[
 			\gamma_{X} \circ f^{*} = f^{*} \circ \gamma_{Y}
 		\]
@@ -255,11 +256,11 @@ if for each $X \in \basepieces$ of (relative) dimension $n$ over $S$, and each
 	\begin{enumerate} % {{{-
 		\item Let $S$ be a smooth projective $\mathbb{C}$-scheme. Then
 			\[
-				\map{\coh}%
+				\map[\coh]%
 				{\basepieces^{\mathrm{op}}}%
 				{\fgrep{\mathbb{Q}}{S}}%
-				{\function{f}{X}{S}}%
-				{\mathrm{R}f_{*}\mathbb{Q}}
+				[\scriptstyle(\map[f]{X}{S})]%
+				[\mathrm{R}f_{*}\mathbb{Q}]
 			\]
 			is a relative Weil cohomology satisfying the weak and
 			hard Lefschetz theorems.
@@ -268,11 +269,11 @@ if for each $X \in \basepieces$ of (relative) dimension $n$ over $S$, and each
 			be a prime different from the characteristic of $k$.
 			Then
 			\[
-				\map{\coh}%
+				\map[\coh]%
 				{\basepieces^{\mathrm{op}}}%
 				{\fgrep{\mathbb{Q_{\ell}}}{S}}%
-				{\function{f}{X}{S}}%
-				{\mathrm{R}f_{*}\mathbb{Q}_{\ell}}
+				[\scriptstyle(\map[f]{X}{S})]%
+				[\mathrm{R}f_{*}\mathbb{Q}_{\ell}]
 			\]
 			is a relative Weil cohomology satisfying the weak and
 			hard Lefschetz theorems.
