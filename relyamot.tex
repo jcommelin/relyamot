@@ -117,16 +117,8 @@ extra structure (say Hodge structure, Galois action, \&c).
 \section{Notation}
 
 Let $S$ be a connected scheme. Then $\smpr_{S}$ denotes the category of smooth
-projective $S$-schemes with geometrically integral fibres.
-% The geometrically integral fibres are very restrictive. For example if S =
-% Spec(k), we do not have field extensions l/k in our category. We might
-% actually want them to be included. If we do include them, we have to be very
-% careful in our definition of Weil cohomology theory, because objects need not
-% be connected and equidimensional anymore.
-% 
-% Ok, we DEFINITELY need more then connected schemes.
-Let $\basepieces$ be
-a full subcategory of $\smpr_{S}$, such that $\basepieces$ is stable under:
+projective $S$-schemes. Let $\basepieces$ be a full subcategory of $\smpr_{S}$,
+such that $\basepieces$ is stable under:
 \begin{enumerate*}[label=(\alph*)] % {{{-
 	\item products (i.e., the fibre product over $S$);
 	\item disjoint sums;
@@ -177,43 +169,49 @@ of
 		\in \mathbb{Z}$ a map
 		$\map[\gamma_{X}] {\cyc^{i}(X)}{\coh^{2i}(X)(i)^{\pi(S)}}$;
 \end{enumerate} % -}}}
-such that for $X \in \basepieces$ of (relative) dimension $n$ over $S$:
+such that the following conditions are satisfied:
 \begin{enumerate}[label=(C\arabic*)] % {{{-
-	\item (\emph{cup product}) $\coh(X)$ is a graded commutative monoid in
-		$\fgrep{F}{S}$ (the multiplication is denoted with $\cup$);
-	\item for every map $\map[f]{X}{Y}$ in $\basepieces$, the induced
-		map $f^{*} = \map[\coh(f)]{\coh(Y)}{\coh(X)}$ is respects
-		the unit and multiplication of the monoids;
-	\item for $i < 0$ and for $i > 2n$ the $i$-th graded piece
-		$\coh^{i}(X)$ is $0$;
-	\item $\coh^{2n}(X)$ is a representation of dimension $1$ (isomorphic
-		to $F(n)$ ???);
-	\item (\emph{Poincar\'{e} duality}) the trace map
-		$\map[\Tr_{X}]{\coh^{2n}(X)(n)}{F}$ is an isomorphism, and
-		for all $i \in \mathbb{Z}$ the product map
-		$\map[\cup]{\coh^{i}(X) \times
-		\coh^{2n-i}(X)(n)}{\coh^{2n}(X)(n)}$ composed with $\Tr_{X}$
+	\item $\coh$ maps disjoint unions to direct sums;
+	\item (\emph{cup product}) for connected $X \in \basepieces$, $\coh(X)$
+		is a graded commutative monoid in $\fgrep{F}{S}$ (the
+		multiplication is denoted with $\cup$);
+	\item for every map $\map[f]{X}{Y}$ in $\basepieces$, with $X$ and $Y$
+		connected, the induced map $f^{*} =
+		\map[\coh(f)]{\coh(Y)}{\coh(X)}$ respects the unit and
+		multiplication of the monoids;
+	\item for $X \in \basepieces$ of (relative) dimension $n$ over $S$, and
+		for $i \in \mathbb{Z}$, the $i$-th graded piece $\coh^{i}(X)$
+		vanishes if $i < 0$ or $i > 2n$;
+	\item (\emph{Poincar\'{e} duality}) for $X \in \basepieces$ of
+		(relative dimension $n$, and for all $i \in \mathbb{Z}$ the
+		composition
+		\[
+			\map[\Tr_{X} \circ \cup]%
+			{\coh^{i}(X) \times \coh^{2n-i}(X)(n)}%
+			{\coh^{2n}(X)(n) \longrightarrow F}
+		\]
 		induces a perfect duality between $\coh^{i}(X)$ and
 		$\coh^{2n-i}(X)(n)$;
-	\item (\emph{K\"{u}nneth}) for every $Y \in \basepieces$
-		the canonical map
+	\item (\emph{K\"{u}nneth}) for connected $X,Y \in \basepieces$ the
+		canonical map
 		\[
 			\map{\coh(X) \tensor \coh(Y)}{\coh(X \times Y)}%
 			[x \tensor y][\pr_{X}^{*} \cup \pr_{Y}^{*}]
 		\]
 		is an isomorphism of graded commutative monoids;
-	\item for $Y \in \basepieces$ of (relative) dimension $m$ over $S$, the
-		natural diagram
+	\item for connected $X,Y \in \basepieces$ of (relative) dimension $m,n$
+		over $S$, the natural diagram
 		\[ \begin{tikzcd}[column sep=large] % {{{-
-			\coh^{2n}(X)(n) \tensor \coh^{2m}(Y)(m)
+			\coh^{2m}(X)(m) \tensor \coh^{2n}(Y)(n)
 			\drar{\Tr_{X} \tensor \Tr_{Y}}
 			\dar{} & \\
-			\coh^{2(n+m)}(X \times Y)(n+m)
+			\coh^{2(m+n)}(X \times Y)(m+n)
 			\rar[swap]{\Tr_{X \times Y}} &
 			F
 		\end{tikzcd} \] % -}}}
 		is commutative;
-	\item for $Y \in \basepieces$, the natural diagram
+	\item for connected $X,Y \in \basepieces$, and $i,j \in \mathbb{Z}$,
+		the natural diagram
 		\[ \begin{tikzcd}[column sep=large] % {{{-
 			\cyc^{i}(X) \tensor \cyc^{j}(Y) \dar
 			\rar{\gamma_{X} \tensor \gamma_{Y}} &
@@ -240,8 +238,6 @@ such that for $X \in \basepieces$ of (relative) dimension $n$ over $S$:
 	\item for the base scheme $S$, the image of $\Tr_{S} \circ \gamma_{S}$
 		is $\mathbb{Z} \subset F$.
 \end{enumerate} % -}}}
-% This might be to restrictive: see the comment right after the definition of
-% \smpr_{S}.
 
 \begin{remark} % {{{-
 	We deliberately choose $\fgrep{F}{S}$ as target of $\coh$, instead of
