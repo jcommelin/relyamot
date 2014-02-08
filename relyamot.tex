@@ -7,11 +7,14 @@
 \usepackage[]{amsmath,amssymb}
 \usepackage[]{mathrsfs}
 
+\usepackage[]{cleveref}
+
 \usepackage[]{tikz-cd}
 
 \usepackage[inline]{enumitem}
 
 \newenvironment{lemma}{\medskip\textit{Lemma.} --- }{}
+\newenvironment{proof}{\textit{Proof.} --- }{\medskip}
 \newenvironment{remark}{\medskip\textit{Remark.} --- }{\medskip}
 
 \makeatletter % {{{-
@@ -79,6 +82,7 @@
 \def\CH{\mathrm{CH}}
 \def\pr{\mathrm{pr}}
 \def\cyc{\mathscr{Z}}
+\def\cycmot{A_{\mathrm{mot}}}
 \def\Tr{\mathrm{Tr}}
 
 \title{On relative YA-motives}
@@ -114,7 +118,7 @@ the motivic analogue of the above decomposition. This result has as application
 that the decomposition on the level of cohomology (the realisations) respects
 extra structure (say Hodge structure, Galois action, \&c).
 
-\section{Notation}
+\section{Notation} \label{notation}
 
 Let $S$ be a connected scheme. Then $\smpr_{S}$ denotes the category of smooth
 projective $S$-schemes. Let $\basepieces$ be a full subcategory of $\smpr_{S}$,
@@ -300,14 +304,49 @@ induces isomorphisms
 			$k$-scheme. (Version for algebraic de Rham.)
 		\item (Version for crystalline???)
 	\end{enumerate} % -}}}
+	\begin{proof} % {{{-
+		Hopefully this is not too hard.
+	\end{proof} % -}}}
 \end{lemma} % -}}}
 
 \section{Relative motives}
 
 %Define the category of relative YA-motives: $\mathcal{M}_{S}$ the category of
 %YA-motives over $S$.
-Fix a reference cohomology $\coh$ on $\basepieces$, with coefficients in a
-field $F$ of characteristic $0$.
+Let $S$ be a connected scheme, and $\basepieces$ a category of \emph{base
+pieces} (as in \cref{notation}). Fix a reference cohomology $\coh$ on
+$\basepieces$, with coefficients in a field $F$ of characteristic $0$,
+satisfying the weak and hard Lefschetz theorems.
+
+Denote with $\pr^{XY}_{X}$ the projection $\map{X \times Y}{X}$. Let $\star$
+denote either the Lefschetz or the Hodge star operator. Let $E$ be a subfield
+of $F$.
+
+A \emph{motivated cycle over $X$ with coefficients in $E$} is an element of
+$\coh(X)$ of the form $\pr^{XY}_{X}(\alpha \cup \star \beta)$, where:
+\begin{itemize} % {{{-
+	\item $\alpha$ and $\beta$ are algebraic cycles with coefficients in
+		$E$, over $X \times Y$, for some arbitrary $Y \in \basepieces$,
+	\item $\star = \star_{XY}$ is relative to $L_{X} \tensor L_{Y}$, where
+		$L_{X}$ (resp.\ $L_{Y}$) is a Lefschetz operator on $X$ (resp.\
+		$Y$).
+\end{itemize} % -}}}
+
+Denote with $\cycmot(X)_{E}$ (or $\cycmot(X)_{E}^{\coh}$ if the reference
+cohomology is ambiguous) the set of motivated cycles over $X$ with coefficients
+in $E$.
+
+\begin{lemma} % {{{-
+	\begin{enumerate*}[label=(\alph*)] % {{{-
+		\item Its a sub-$E$-algebra;
+		\item Contains $A(X)$ and $\star A(X)$;
+		\item Behaves well under pullback and pushforward.
+	\end{enumerate*} % -}}}
+	\begin{proof} % {{{-
+		\fixme{Ought to be the same as in Andr\'{e}.}
+	\end{proof} % -}}}
+\end{lemma} % -}}}
+
 
 \begin{lemma} % {{{-
 	Let $X/S$ be a smooth projective scheme over a scheme $S$. Write
