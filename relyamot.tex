@@ -83,6 +83,7 @@
 \def\pr{\mathrm{pr}}
 \def\cyc{\mathscr{Z}}
 \def\cycmot{A_{\mathrm{mot}}}
+\def\cormot{C_{\mathrm{mot}}}
 \def\Tr{\mathrm{Tr}}
 
 \title{On relative YA-motives}
@@ -342,24 +343,64 @@ in $E$.
 		\item Contains $A(X)$ and $\star A(X)$;
 		\item Behaves well under pullback and pushforward.
 	\end{enumerate*} % -}}}
+
 	\begin{proof} % {{{-
 		\fixme{Ought to be the same as in Andr\'{e}.}
 	\end{proof} % -}}}
 \end{lemma} % -}}}
 
+Let $X = \coprod_{i} X_{i}$ and $Y = \coprod_{i} Y_{j}$ be two objects of
+$\basepieces$, with their decompositions in connected components. Let $r =
+(r_{ij})_{ij}$ be a locally constant $\mathbb{Z}$-valued function on $X
+\times_{S} Y$ (i.e., an integer $r_{ij}$ on each $X_{i} \times_{S} Y_{j}$). A
+\emph{motivated correspondence from $X$ to $Y$ of degree $r$ with coefficients
+in $E$} is an element of $\oplus_{ij} \cycmot^{\dim(X_{i}) + r_{ij}}(X_{i}
+\times_{S} Y_{j})_{E}$. Denote with $\cormot(X,Y)_{E}$ the graded space of
+motivated correspondences from $X$ to $Y$ with coefficients in $E$.
 
 \begin{lemma} % {{{-
-	Let $X/S$ be a smooth projective scheme over a scheme $S$. Write
-	$\mathcal{M}_{X}$ for the category of YA-motives over $X$.
+	When composing motivated correspondences, their degrees add up. In
+	particular $\cormot(X,X)_{E}$ is a graded $E$-algebra.
 
-	Let $h(X)$ be the motive of $X$ in $\mathcal{M}_{S}$. Let $\mathcal{C}$
-	be the under category $h(X) \downarrow \mathcal{M}_{S}$ (objects: $h(X)
-	\to M$ in $\mathcal{M}_{S}$; morphisms: commutative triangles in
-	$\mathcal{M}_{S}$).
+	\begin{proof} % {{{-
+		\fixme{Ought to be the same as in Andr\'{e}.}
+	\end{proof} % -}}}
+\end{lemma} % -}}}
 
-	The category $\mathcal{M}_{X}$ is equivalent to $\mathcal{C}$.
-	
-	(Which way does the easy functor go?)
+For morphisms $f$, we get $f_{*}$ (resp. $f^{*}$), by composing with the graph
+of $f$ (resp. its transpose). They are related by $f_{*}(\alpha \cup f^{*}
+\beta) = f_{*}(\alpha) \cup \beta$.
+
+\begin{lemma} % {{{-
+	The algebra $\cormot(X,X)_{E}$ contains the Lefschetz and Hodge star
+	operators, and the K\"{u}nneth projectors.
+
+	\begin{proof} % {{{-
+		\fixme{Ought to be the same as in Andr\'{e}.}
+	\end{proof} % -}}}
+\end{lemma} % -}}}
+
+% Crucial lemma
+\begin{lemma} % {{{-
+	Let $S' \in \basepieces$ be some smooth projective $S$-scheme, and
+	assume that $\basepieces$ is closed under fibre porducts over $S'$. Let
+	$\basepieces'$ be the slice category of $S'$-schemes in $\basepieces$.
+	The category $\basepieces'$ is a category of base pieces in
+	$\smpr_{S'}$.
+
+	Let $\mathcal{M}_{S}(\basepieces)'$ be the coslice category of
+	$h(S')$-motives in $\mathcal{M}_{S}(\basepieces)$. (I.e., objects:
+	$h(S') \to M$ in $\mathcal{M}_{S}(\basepieces)$; morphisms: commutative
+	triangles in $\mathcal{M}_{S}(\basepieces)$).
+
+	The functor
+	\[
+		\map{\mathcal{M}_{S'}(\basepieces')}%
+		{\mathcal{M}_{S}(\basepieces)}%
+		[(X/S', p, m)][(X/S, p, m)]
+	\]
+	is well-defined and induces and equivalence of
+	$\mathcal{M}_{S'}(\basepieces')$ with $\mathcal{M}_{S}(\basepieces)'$.
 \end{lemma} % -}}}
 
 
