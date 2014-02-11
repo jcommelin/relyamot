@@ -3,6 +3,7 @@
 \def\fixme{\textbf}
 
 \usepackage[]{xparse}
+\usepackage[]{microtype}
 
 \usepackage[]{amsmath,amssymb}
 \usepackage[]{mathrsfs}
@@ -381,11 +382,11 @@ of $f$ (resp. its transpose). They are related by $f_{*}(\alpha \cup f^{*}
 \end{lemma} % -}}}
 
 \fixme{We need a notion of compatibility for relative Weil cohomologies over
-	$S'$, and over $S$, whenever there is some smooth proper
+	$S'$, and over $S$, whenever there is some smooth projective
 $\map{S'}{S}$.}
 
-\fixme{We want some pushforward and pullback of motives along a smooth proper
-$\map{S'}{S}$. Also, an adjunction?}
+\fixme{We want some pushforward and pullback of motives along a smooth
+projective $\map{S'}{S}$. Also, an adjunction?}
 
 % Crucial lemma
 \begin{lemma} % {{{-
@@ -413,4 +414,89 @@ $\map{S'}{S}$. Also, an adjunction?}
 
 \section{Decomposition theorem}
 
+\section{Wishful thinking}
+
+What we really want is a motivic decomposition theorem. So, for some smooth
+projective maps $\map[g]{X}{S}$ and $\map[f]{S}{\mathrm{Spec}(k)}$, a statement
+that looks like
+\[
+	\mathrm{E}_{2}^{p,q} = h^{p}(\mathrm{R}^{q}g_{*} \mathbb{1}_{X})
+	\quad \Longrightarrow h^{p+q}(X)
+\]
+and
+\[
+	h^{n}(X) \cong \bigoplus_{p+q = n} h^{p}(\mathrm{R}^{q}g_{*}
+	\mathbb{1}_{X}).
+\]
+(Here $\mathbb{1}_{X}$ denotes the unit motive over $X$.)
+
+What we need for this, is:
+\begin{enumerate} % {{{-
+	\item a theory of relative motives;
+	\item the K\"{u}nneth projectors should be motivic;
+	\item a pushforward of motives along smooth projective maps.
+\end{enumerate} % -}}}
+A good candidate would be a generalisation of Andr\'{e} motives to the relative
+setting. The pushforward along $\map{S'}{S}$ would for example be defined as
+\[
+	(X/S', p, n) \mapsto (X/S, \Delta^{S'}_{S,*}(p), n)
+\]
+where $\Delta^{S'}_{S}$ is the canonical map $\map{X \times_{S'} X}{X
+\times_{S} X}$.
+
+However, to generalise Andr\'{e} motives to the relative setting, we need to
+generalise Weil cohomology theories to the relative setting. Moreover, to make
+sense of the pushforward, we need to be able to relate motives over $S'$ with
+motives over $S$; and therefore also relative Weil cohomology over $S'$ with
+relative Weil cohomology over $S$. This suggests that we should assign in a
+functorial manner to each $S$ a relative Weil cohomology theory over $S$.
+
+\subsection{A fibred category approach to the problem}
+
+Let $S$ be a scheme. Observe that $\map{(\smpr_{S})^{\Delta^{1}}}{\smpr_{S}}$
+is a fibred category. For each smooth projective scheme $S'$ over $S$, we have
+the fibre $\smpr_{S'}$. This fibred category is the source of the Weil
+cohomology functor.
+
+We now need to think how to encode the target. The approach above suggests that
+we assign to each $S'$ a (pro-algebraic) group $\pi(S)$ (e.g., the \'{e}tale
+fundamental group, or the Tannaka group associated with polarisable variations
+of Hodge structures on $S$).
+
+The decomposition theorem on the level of cohomology definitely needs derived
+structures, so it makes sense that every $X$ in the fibre above $S'$ is mapped
+to an object in the derived category of finite-dimensional
+$\pi(S')$-representations over some field $F$.
+
+Hence the target should be the fibred category obtained from the Grothendieck
+construction
+\[
+	\map{\mathrm{Grp}}{\mathrm{Cat}}[G][\mathcal{D}(\mathrm{FRep}_{F}(G).]
+\]
+More precisely, we map $\map{H}{G}$ to $\mathcal{D}(\mathrm{Ind}^{G}_{H})$, and
+it is easy to that this is pseudo-functorial. In this way, we obtain a fibred
+category
+\[
+	\map{\mathcal{D}(\mathrm{FRep}_{F}(\_))}{\mathrm{Grp}}.
+\]
+The Weil cohomology theory will then be a commutative diagram
+\[
+	\begin{tikzcd} % {{{-
+		(\smpr_{S})^{\Delta^{1}} \rar{\coh} \dar &
+		\mathcal{D}(\mathrm{FRep}_{F}(\_)) \dar \\
+		\smpr_{S} \rar{\pi} & \mathrm{Grp}
+	\end{tikzcd} % -}}}
+\]
+subject to an awful load of conditions that I still need to figure out.
+
+Hopefully, the classical theories (Betti, de Rham, $\ell$-adic \'{e}tale,
+crystalline) fit in this picture. If not, the approach is pretty much doomed.
+If we succeed, generalising Andr\'{e} motives should not be too hard.
+
+We then want the (well-formed) version of the last lemma of the previous
+section:
+\begin{lemma} % {{{-
+	Let $\map{X}{Y}$ be a map in $\smpr_{S}$. Giving a motive over $X$ is
+	the same as giving an $h(X)$-motive over $Y$.
+\end{lemma} % -}}}
 \end{document}
