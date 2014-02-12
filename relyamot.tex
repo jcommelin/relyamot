@@ -472,19 +472,27 @@ $\pi(S')$-representations over some field $F$.
 Hence the target should be the fibred category obtained from the Grothendieck
 construction
 \[
-	\map{\mathrm{Grp}}{\mathrm{Cat}}[G][\mathcal{D}(\mathrm{FRep}_{F}(G).]
+	\map{\mathrm{Grp}}{\mathrm{Cat}}%
+	[G][\mathcal{D}(\mathrm{FRep}_{F}(G)^{\mathrm{op}}.]
 \]
 More precisely, we map $\map{H}{G}$ to $\mathcal{D}(\mathrm{Ind}^{G}_{H})$, and
 it is easy to that this is pseudo-functorial. In this way, we obtain a fibred
 category
 \[
-	\map{\mathcal{D}(\mathrm{FRep}_{F}(\_))}{\mathrm{Grp}}.
+	\map{\mathcal{D}(\mathrm{FRep}_{F}(\_))^{\mathrm{op}}}{\mathrm{Grp}}.
 \]
-The Weil cohomology theory will then be a commutative diagram
+In particular the set $\mathrm{Hom}(V_{H},W_{G})$, with $V_{H}, W_{G}$ objects
+in the fibres above $H, G$ respectively, consists of pairs $(f, \phi)$, where
+$f$ is a map $\map[f]{H}{G}$, and $\phi$ a morphism
+$\map[\phi]{W_{G}}{\mathrm{Ind}^{G}_{H}(V_{H})}$ in the category
+$\mathcal{D}(\mathrm{FRep}_{F}(G))$, i.e. the opposite of the fibre above $G$.
+
+A Weil cohomology theory will then be a morphism of fibred categories $(\pi,
+\coh)$,
 \[
 	\begin{tikzcd} % {{{-
 		(\smpr_{S})^{\Delta^{1}} \rar{\coh} \dar &
-		\mathcal{D}(\mathrm{FRep}_{F}(\_)) \dar \\
+		\mathcal{D}(\mathrm{FRep}_{F}(\_))^{\mathrm{op}} \dar \\
 		\smpr_{S} \rar{\pi} & \mathrm{Grp}
 	\end{tikzcd} % -}}}
 \]
