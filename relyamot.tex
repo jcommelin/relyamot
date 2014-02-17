@@ -509,4 +509,45 @@ section:
 	Let $\map{X}{Y}$ be a map in $\smpr_{S}$. Giving a motive over $X$ is
 	the same as giving an $h(X)$-motive over $Y$.
 \end{lemma} % -}}}
+
+\section{Relative Chow motives}
+
+We refer to [MNP] for the definition of relative Chow motives. Let $S$ be a
+scheme, and let $\mathcal{M}_{S}$ denote the category of relative Chow motives
+over $S$. Let $\map[h_{S}]{\smpr_{S}^{\mathrm{op}}}{\mathcal{M}_{S}}$ be the
+functor mapping $X$ to the motive $(X, \mathrm{id}, 0)$.
+	
+Let $\map[f]{S}{S'}$ be a smooth projective morphism. As can be read in [MNP,
+Cor 8.1.7], there is a functor
+\[
+	\map[f_{*}]{\mathcal{M}_{S}}{\mathcal{M}_{S'}}%
+	[(X,p,m)][(X,\Delta^{S}_{S',*}(p),m)]
+\]
+where $\map[\Delta^{S}_{S'}]{X \times_{S} X}{X \times_{S'} X}$ is the canonical
+map induced by projections to $X$.
+
+Observe that the unit object $h_{S}(S) \in \mathcal{M}_{S}$ is mapped to
+$h_{S'}(S)$ in $\mathcal{M}_{S'}$.
+
+Further, the functor is additive: this boils down to the push-forward on Chow
+groups along $\map{X \times_{S} Y}{X \times_{S'} Y}$ being a group
+homomorphism.
+
+Define a cohomology functor
+\[
+	\map[\coh_{S}]{\mathcal{M}_{S}}%
+	{\text{$\mathbb{Q}_{\ell}$-sheaves on $S$}}%
+	[\left((\map[g]{X}{S}),p,m\right)]%
+	[\mathrm{Im}(p_{*}|\mathrm{R}g_{*}\mathbb{Q}_{\ell})(m)]
+\]
+We now want to show that the following diagram commutes.
+\[
+	\begin{tikzcd} % {{{-
+		\mathcal{M}_{S} \rar{f_{*}} \dar{\coh_{S}}
+		& \mathcal{M}_{S'} \dar{\coh_{S'}} \\
+		\text{$\mathbb{Q}_{\ell}$-sheaves on $S$} \rar{\mathrm{R}f_{*}}
+		& \text{$\mathbb{Q}_{\ell}$-sheaves on $S'$}
+	\end{tikzcd} % -}}}
+\]
+
 \end{document}
