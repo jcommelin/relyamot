@@ -540,6 +540,22 @@ Define a cohomology functor
 	[\left((\map[g]{X}{S}),p,m\right)]%
 	[\mathrm{Im}(p_{*}|\mathrm{R}g_{*}\mathbb{Q}_{\ell})(m)]
 \]
+We should also indicate what $\coh_{S}$ does with morphisms. Let
+$\map[g]{X}{S}$ and $\map[h]{Y}{S}$ be two object in $\smpr_{S}$. First observe
+that if $\map[f]{X}{Y}$ is a morphism in $\smpr_{S}$, then we have induced
+morphisms
+$\map[f_{*}]{\mathrm{R}g_{*}\mathbb{Q}_{\ell}}{\mathrm{R}h_{*}\mathbb{Q}_{\ell}}$
+and
+$\map[f^{*}]{\mathrm{R}h_{*}\mathbb{Q}_{\ell}}{\mathrm{R}g_{*}\mathbb{Q}_{\ell}}$.
+One can see this as follows: take $s \in S$. Then
+$(\mathrm{R}g_{*}\mathbb{Q}_{\ell})_{s}$ is the cohomology of $X_{s}$ (and
+similarly for $Y$). The stalk $(\mathrm{R}g_{*}\mathbb{Q}_{\ell})_{s}$
+determines lisse $\ell$-adic sheaf $\mathrm{R}g_{*}\mathbb{Q}_{\ell}$, and the
+$f_{*}$ and $f^{*}$ morphisms are induced by those between the cohomology of
+$X_{s}$ and $Y_{s}$.
+
+Let $\map[p]{X}{Y}$ be a correspondence over $S$.
+
 We now want to show that the following diagram commutes.
 \[
 	\begin{tikzcd} % {{{-
@@ -549,5 +565,6 @@ We now want to show that the following diagram commutes.
 		& \text{$\mathbb{Q}_{\ell}$-sheaves on $S'$}
 	\end{tikzcd} % -}}}
 \]
+It is clear that this commutes on objects $h(X) = (X, \Delta, 0)$.
 
 \end{document}
