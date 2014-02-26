@@ -533,6 +533,23 @@ Further, the functor is additive: this boils down to the push-forward on Chow
 groups along $\map{X \times_{S} Y}{X \times_{S'} Y}$ being a group
 homomorphism.
 
+Another important question/lemma is whether the following diagram commutes:
+\[
+	\begin{tikzcd} % {{{-
+		\smpr_{S} \rar{f \circ \_} \dar{h_{S}}
+		& \smpr_{S'} \dar{h_{S'}} \\
+		\mathcal{M}_{S} \rar{f_{*}}
+		& \mathcal{M}_{S'}
+	\end{tikzcd} % -}}}
+\]
+This diagram indeed commutes; for the following reasons: Given a map
+$\map[g]{X/S}{Y/S}$, the graph $\Gamma_{g/S}$ is the pushforward of $X$ along
+$\map[(\mathrm{id},g/S)]{X}{X \times_{S} Y}$. Similarly, we obtain
+$\Gamma_{g/S'}$. Finally, it follows from the universal property of fibred
+products that $\Delta^{S}_{S'} \circ (\mathrm{id},g/S) = (\mathrm{id},g/S')$.
+By functoriality of pushforwards, we find $\Delta^{S}_{S',*}(\Gamma_{g/S}) =
+\Gamma_{G/S'}$. Therefore the diagram commutes on morphisms.
+
 Define a cohomology functor
 \[
 	\map[\coh_{S}]{\mathcal{M}_{S}}%
@@ -567,15 +584,5 @@ We now want to show that the following diagram commutes.
 \]
 It is clear that this commutes on objects $h(X) = (X, \Delta, 0)$.
 
-Another important question/lemma (which should probably come before the
-previous paragraphs) is whether the following diagram commutes:
-\[
-	\begin{tikzcd} % {{{-
-		\smpr_{S} \rar{f \circ \_} \dar{h_{S}}
-		& \smpr_{S'} \dar{h_{S'}} \\
-		\mathcal{M}_{S} \rar{f_{*}}
-		& \mathcal{M}_{S'}
-	\end{tikzcd} % -}}}
-\]
 
 \end{document}
