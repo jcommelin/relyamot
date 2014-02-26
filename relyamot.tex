@@ -537,8 +537,8 @@ homomorphism.
 Another important question/lemma is whether the following diagram commutes:
 \[
 	\begin{tikzcd} % {{{-
-		\smpr_{S} \rar{f \circ \_} \dar{h_{S}}
-		& \smpr_{S'} \dar{h_{S'}} \\
+		\smpr_{S}^{\mathrm{op}} \rar{f \circ \_} \dar{h_{S}}
+		& \smpr_{S'}^{\mathrm{op}} \dar{h_{S'}} \\
 		\mathcal{M}_{S} \rar{f_{*}}
 		& \mathcal{M}_{S'}
 	\end{tikzcd} % -}}}
@@ -554,7 +554,7 @@ By functoriality of pushforwards, we find $\Delta^{S}_{S',*}(\Gamma_{g/S}) =
 Define a cohomology functor
 \[
 	\map[\coh_{S}]{\mathcal{M}_{S}}%
-	{\text{$\mathbb{Q}_{\ell}$-sheaves on $S$}}%
+	{\{\text{$\mathbb{Q}_{\ell}$-sheaves on $S$}\}}%
 	[\left((\map[g]{X}{S}),p,m\right)]%
 	[\mathrm{Im}(p_{*}|\mathrm{R}g_{*}\mathbb{Q}_{\ell})(m)]
 \]
@@ -572,18 +572,17 @@ determines lisse $\ell$-adic sheaf $\mathrm{R}g_{*}\mathbb{Q}_{\ell}$, and the
 $f_{*}$ and $f^{*}$ morphisms are induced by those between the cohomology of
 $X_{s}$ and $Y_{s}$.
 
-Let $\map[p]{X}{Y}$ be a correspondence over $S$.
-
 We now want to show that the following diagram commutes.
 \[
 	\begin{tikzcd} % {{{-
 		\mathcal{M}_{S} \rar{f_{*}} \dar{\coh_{S}}
 		& \mathcal{M}_{S'} \dar{\coh_{S'}} \\
-		\text{$\mathbb{Q}_{\ell}$-sheaves on $S$} \rar{\mathrm{R}f_{*}}
-		& \text{$\mathbb{Q}_{\ell}$-sheaves on $S'$}
+		\{\text{$\mathbb{Q}_{\ell}$-sheaves on $S$}\}
+		\rar{\mathrm{R}f_{*}}
+		& \{\text{$\mathbb{Q}_{\ell}$-sheaves on $S'$}\}
 	\end{tikzcd} % -}}}
 \]
-It is clear that this commutes on objects $h(X) = (X, \Delta, 0)$.
-
+It is clear that this commutes on objects $h(X) = (X, \Delta, 0)$. Let
+$\map[p]{X}{Y}$ be a correspondence over $S$.
 
 \end{document}
